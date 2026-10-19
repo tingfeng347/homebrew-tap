@@ -4,8 +4,8 @@
 class Mactools < Formula
   desc "macOS terminal toolkit for Homebrew packages and AI coding tools"
   homepage "https://github.com/tingfeng347/mactools"
-  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.4.tar.gz"
-  sha256 "643b9eba5965f3259db5025d63953aae7dc6e931ec8844c208d03a5f50e6121a"
+  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.5.tar.gz"
+  sha256 "ea169799b76afa094dc40889179f2bede78c48da318dc20704a3ce5fe271845e"
 
   depends_on "fzf"
   depends_on :macos
