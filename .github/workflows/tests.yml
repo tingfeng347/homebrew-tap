@@ -1,0 +1,23 @@
+name: Test Homebrew formulae
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tap this checkout
+        run: brew tap --custom-remote tingfeng347/tap "$GITHUB_WORKSPACE"
+      - name: Check formula style
+        run: brew style tingfeng347/tap/mactools
+      - name: Install from source
+        run: brew install --build-from-source tingfeng347/tap/mactools
+      - name: Test installed commands
+        run: |
+          brew test tingfeng347/tap/mactools
+          ma --version
+          maci --help
