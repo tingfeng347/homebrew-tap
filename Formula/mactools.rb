@@ -4,8 +4,9 @@
 class Mactools < Formula
   desc "macOS terminal toolkit for Homebrew packages and AI coding tools"
   homepage "https://github.com/tingfeng347/mactools"
-  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.12.tar.gz"
-  sha256 "ef9824103f8ed80b31eba4f29aa239cb53b0620451858fd9c48041556d2296e8"
+  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.13.tar.gz"
+  sha256 "aed135b5aebb81ae5d931b050efe17d499c37be99a49199f818ed489dd25b8d8"
+  license "GPL-3.0-only"
 
   depends_on "fzf"
   depends_on :macos
@@ -36,6 +37,8 @@ class Mactools < Formula
     ENV["MACTOOLS_LANG"] = "en"
     assert_match "mactools #{version}", shell_output("#{bin}/ma --version")
     assert_match "Usage:", shell_output("#{bin}/ma --help")
+    assert_path_exists libexec/"bin/mactools_mole.zip"
+    assert_match "browser-cache", shell_output("#{bin}/ma clean --exact browser-cache --list")
     %w[maci macr macu macd macc macm maca].each do |command|
       assert_match "--help", shell_output("#{bin}/#{command} --help")
     end
