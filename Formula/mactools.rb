@@ -4,8 +4,8 @@
 class Mactools < Formula
   desc "macOS terminal toolkit for Homebrew packages and AI coding tools"
   homepage "https://github.com/tingfeng347/mactools"
-  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.13.tar.gz"
-  sha256 "aed135b5aebb81ae5d931b050efe17d499c37be99a49199f818ed489dd25b8d8"
+  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.15.tar.gz"
+  sha256 "29143212e6804b970a60dcd2e2168592b8052502f51d537de2c59cbae310bd0e"
   license "GPL-3.0-only"
 
   depends_on "fzf"
@@ -15,7 +15,7 @@ class Mactools < Formula
   def install
     libexec.install "bin"
     (libexec/"python-bin").install_symlink formula_opt_bin("python@3.14")/"python3.14" => "python3"
-    commands = %w[ma maci macr macu macd macc macm maca]
+    commands = %w[ma maci macr macu macd macc maco macm maca]
     commands.each do |command|
       (bin/command).write_env_script libexec/"bin"/command,
                                      PATH: "#{libexec}/python-bin:#{formula_opt_bin("fzf")}:$PATH"
@@ -38,8 +38,12 @@ class Mactools < Formula
     assert_match "mactools #{version}", shell_output("#{bin}/ma --version")
     assert_match "Usage:", shell_output("#{bin}/ma --help")
     assert_path_exists libexec/"bin/mactools_mole.zip"
+    assert_path_exists libexec/"bin/mactools_apps.py"
+    assert_path_exists libexec/"bin/mactools_optimize.py"
     assert_match "browser-cache", shell_output("#{bin}/ma clean --exact browser-cache --list")
-    %w[maci macr macu macd macc macm maca].each do |command|
+    assert_match "network-optimization", shell_output("#{bin}/ma optimize --list")
+    assert_match "--apps", shell_output("#{bin}/macr --help")
+    %w[maci macr macu macd macc maco macm maca].each do |command|
       assert_match "--help", shell_output("#{bin}/#{command} --help")
     end
     %w[bash zsh fish].each do |shell|
