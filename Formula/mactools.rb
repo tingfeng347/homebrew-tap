@@ -4,8 +4,8 @@
 class Mactools < Formula
   desc "macOS terminal toolkit for Homebrew packages and AI coding tools"
   homepage "https://github.com/tingfeng347/mactools"
-  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.16.tar.gz"
-  sha256 "77cb1911cc8898c4dba2abece234f831bcf36117d8d00c072ebc083b6137df3a"
+  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.17.tar.gz"
+  sha256 "f039c6e1a3d21acd69fe7d94546b9441b2c973cb518e09a6c1862d12569ded93"
   license "GPL-3.0-only"
 
   depends_on "fzf"
@@ -44,6 +44,7 @@ class Mactools < Formula
     assert_match "network-optimization", shell_output("#{bin}/ma optimize --list")
     assert_match "--apps", shell_output("#{bin}/macr --help")
     assert_match "--scan-timeout", shell_output("#{bin}/macr --help")
+    assert_match "--clean-leftovers", shell_output("#{bin}/macr --help")
     %w[maci macr macu macd macc maco macm maca].each do |command|
       assert_match "--help", shell_output("#{bin}/#{command} --help")
     end
