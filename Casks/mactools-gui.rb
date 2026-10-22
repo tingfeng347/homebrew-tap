@@ -11,4 +11,13 @@ cask "mactools-gui" do
   depends_on :macos
 
   app "mactools.app"
+
+  # The DMG is not signed or notarized, so the app would otherwise be blocked by
+  # Gatekeeper with "damaged and can't be opened". Clear the quarantine flag on
+  # install instead of asking every user to run xattr manually.
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args:         ["-dr", "com.apple.quarantine", "{{appdir}}/mactools.app"],
+        must_succeed: false
+  end
 end
