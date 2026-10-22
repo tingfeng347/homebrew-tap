@@ -1,6 +1,6 @@
 cask "mactools-gui" do
-  version "0.1.17"
-  sha256 "288fd1606bec29ca4191a51b845ded3d032dd8dd0b6cf0e62d0dd455349103ab"
+  version "0.1.18"
+  sha256 "802f1eb708aa347ce77088dcf9a7d5578b0e36b48c04a1ad24ef654cf4010134"
 
   url "https://github.com/tingfeng347/mactools/releases/download/v#{version}/mactools_#{version}_universal.dmg"
   name "mactools"

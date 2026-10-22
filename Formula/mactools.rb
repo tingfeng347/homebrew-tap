@@ -4,8 +4,8 @@
 class Mactools < Formula
   desc "macOS terminal toolkit for Homebrew packages and AI coding tools"
   homepage "https://github.com/tingfeng347/mactools"
-  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.17.tar.gz"
-  sha256 "f039c6e1a3d21acd69fe7d94546b9441b2c973cb518e09a6c1862d12569ded93"
+  url "https://github.com/tingfeng347/mactools/archive/refs/tags/v0.1.18.tar.gz"
+  sha256 "466c6805f2e8d4e139ad7e3845035fb3a872aa41611ab8fde23e8e8dcfb1709a"
   license "GPL-3.0-only"
 
   depends_on "fzf"
@@ -40,6 +40,8 @@ class Mactools < Formula
     assert_path_exists libexec/"bin/mactools_mole.zip"
     assert_path_exists libexec/"bin/mactools_apps.py"
     assert_path_exists libexec/"bin/mactools_optimize.py"
+    assert_match "--list-json", (libexec/"bin/mactools_packages.py").read
+    assert_match "--pick", (libexec/"bin/mactools_packages.py").read
     assert_match "browser-cache", shell_output("#{bin}/ma clean --exact browser-cache --list")
     assert_match "network-optimization", shell_output("#{bin}/ma optimize --list")
     assert_match "--apps", shell_output("#{bin}/macr --help")
