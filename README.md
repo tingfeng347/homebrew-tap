@@ -1,11 +1,19 @@
 # Homebrew Tap
 
-Homebrew formulae for [tingfeng347](https://github.com/tingfeng347) tools.
+Homebrew packages for [tingfeng347](https://github.com/tingfeng347) tools.
 
 ## Install mactools
 
+CLI:
+
 ```sh
 brew install tingfeng347/tap/mactools
+```
+
+Desktop GUI:
+
+```sh
+brew install --cask tingfeng347/tap/mactools-gui
 ```
 
 Or add the tap first:
@@ -27,11 +35,14 @@ maci firefox
 ```sh
 brew update
 brew upgrade mactools
+brew upgrade --cask mactools-gui
 brew uninstall mactools
+brew uninstall --cask mactools-gui
 ```
 
-## Available formulae
+## Available packages
 
-| Formula | Project |
-| --- | --- |
-| `mactools` | [macOS terminal toolkit](https://github.com/tingfeng347/mactools) |
+| Package | Type | Project |
+| --- | --- | --- |
+| `mactools` | formula | [macOS terminal toolkit](https://github.com/tingfeng347/mactools) |
+| `mactools-gui` | cask | [Desktop GUI](https://github.com/tingfeng347/mactools/blob/dev/docs/gui.md) |
